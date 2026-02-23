@@ -69,7 +69,7 @@ public final class Immutable {
 class demo {
     public static void main(String[] args) {
         // wrong Immutable
-        List<Integer> markList = new ArrayList(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 8));
+        List<Integer> markList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 8));
 
         WrongImmutable object = new WrongImmutable(5, "new delhi", markList);
         markList.add(9);
