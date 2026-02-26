@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Demonstrates how comparisons work between:
  * 1. Primitive types and wrapper classes
@@ -39,5 +42,6 @@ public class WrapperComparisonDemo {
 
         // Different objects are created, so references are different
         System.out.println(nonCachedNumberOne == nonCachedNumberTwo);  // false
+        
     }
 }
