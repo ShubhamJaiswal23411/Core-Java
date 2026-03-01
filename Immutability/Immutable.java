@@ -1,3 +1,4 @@
+package Immutability;
 
 /*
  * Rules to make a class immutable :

@@ -1,4 +1,4 @@
-package DeadLock;
+package MultiThreading.DeadLock;
 
 /**
  * Demonstrates how consistent lock ordering prevents deadlock.

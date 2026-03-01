@@ -1,3 +1,4 @@
+package MultiThreading;
 public class ThreadStatesDemo {
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(()->{

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
+package JavaConcepts;
 
 /**
  * Demonstrates how comparisons work between:
@@ -8,15 +7,15 @@ import java.util.Collection;
  *
  * Key Concepts:
  * - When a primitive (int) is compared with an Integer object using ==,
- *   Java automatically unboxes the Integer to int, so values are compared.
+ * Java automatically unboxes the Integer to int, so values are compared.
  *
  * - Integer objects between -128 and 127 are cached by Java.
- *   This means the same object reference is reused within this range.
+ * This means the same object reference is reused within this range.
  *
  * - Integer objects outside this range are NOT cached,
- *   so different objects are created even if the values are equal.
+ * so different objects are created even if the values are equal.
  */
-public class WrapperComparisonDemo {
+public class WrapperComparisonAndCaching {
 
     public static void main(String[] args) {
 
@@ -25,23 +24,21 @@ public class WrapperComparisonDemo {
         Integer wrapperValue = 300;
 
         // The Integer is unboxed to int, so values are compared
-        System.out.println(primitiveValue == wrapperValue);  // true
-
+        System.out.println(primitiveValue == wrapperValue); // true
 
         // Wrapper comparison within cache range (-128 to 127)
         Integer cachedNumberOne = 127;
         Integer cachedNumberTwo = 127;
 
         // Both references point to the same cached object
-        System.out.println(cachedNumberOne == cachedNumberTwo);  // true
-
+        System.out.println(cachedNumberOne == cachedNumberTwo); // true
 
         // Wrapper comparison outside cache range
         Integer nonCachedNumberOne = 128;
         Integer nonCachedNumberTwo = 128;
 
         // Different objects are created, so references are different
-        System.out.println(nonCachedNumberOne == nonCachedNumberTwo);  // false
-        
+        System.out.println(nonCachedNumberOne == nonCachedNumberTwo); // false
+
     }
 }
