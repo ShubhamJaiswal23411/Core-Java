@@ -1,4 +1,4 @@
-package MultiThreading.ProducerConsumer;
+package MultiThreading.ProducerConsumer.TrueFalseProducerConsumer;
 
 public class ThreadCommunication {
     public static void main(String[] args) {
