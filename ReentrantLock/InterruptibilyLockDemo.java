@@ -32,7 +32,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * - lockInterruptibly() is useful for building responsive and cancellable
  *   systems where waiting threads should be able to terminate early.
  */
-public class LockInterruptibilityDemo {
+public class InterruptibilyLockDemo {
 
     public static void main(String[] args) throws InterruptedException {
 

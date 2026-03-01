@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * In such cases, synchronized may be simpler unless fine-grained
  * control is required.
  */
-public class ReentrantLockDemo {
+public class MethodDemo {
 
     public static void main(String[] args) throws InterruptedException {
 

@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * - Thread.holdsLock(object) works only with monitor locks (synchronized),
  *   not with manual locks like ReentrantLock.
  */
-public class ReentrantLockReentrancyDemo {
+public class ReentrancyDemo {
 
     private final Lock reentrantLock = new ReentrantLock();
 
@@ -83,7 +83,7 @@ public class ReentrantLockReentrancyDemo {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ReentrantLockReentrancyDemo demo = new ReentrantLockReentrancyDemo();
+        ReentrancyDemo demo = new ReentrancyDemo();
 
         Thread t1 = new Thread(demo::outerOperation);
         Thread t2 = new Thread(()->demo.outerOperation());

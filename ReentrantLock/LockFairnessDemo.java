@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * cause starvation.
  */
 
-public class RentrantLockFairnessDemo {
+public class LockFairnessDemo {
 
     
     public static void main(String[] args) throws InterruptedException {
