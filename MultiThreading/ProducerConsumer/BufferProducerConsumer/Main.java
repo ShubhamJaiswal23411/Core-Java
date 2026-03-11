@@ -1,23 +1,22 @@
-package MultiThreading.ProducerConsumer.ValueProducerConsumer;
+package MultiThreading.ProducerConsumer.BufferProducerConsumer;
 
-public class ThreadCommunication {
+public class Main {
     public static void main(String[] args) throws InterruptedException {
         SharedResource resource = new SharedResource();
-
-        Thread producer  = new Thread(()->{
-            for(int i =1;i<=10;i++){
+        Thread producer = new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
                 resource.produce(i);
             }
         });
 
-        Thread consumer = new Thread(()->{
-            for(int i =0;i<10;i++){
+        Thread consumer = new Thread(() -> {
+            for (int i = 0; i < 2; i++) {
                 resource.consume();
             }
         });
 
-        producer.start();
         consumer.start();
+        producer.start();
 
         producer.join();
         consumer.join();

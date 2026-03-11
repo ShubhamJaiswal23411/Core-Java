@@ -1,11 +1,20 @@
 package MultiThreading.ProducerConsumer.ValueProducerConsumer;
+/*
+    Important point : this producer consumer problem works with an if condition as wel without a while
+    but the reason for using a while is that a thread might wake if someone else called a notify all as well 
+    in that case it is gonna start its execution instead of checking if the flag is true or false
+    that will break the code 
+    so thats why we should use while loop instead of an if.
+
+*/
+
 
 public class SharedResource {
     private int data = 0;
-    private boolean hasData = false;
+    private boolean hasData = true;
 
     public synchronized void produce(int val) {
-        if (hasData) {
+        while (hasData) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -19,11 +28,12 @@ public class SharedResource {
         }
         data = val;
         hasData = true;
+        System.out.println("Produced -" + val);
         notify();
     }
 
-    public synchronized int consume(){
-        while(!hasData){
+    public synchronized void consume() {
+        while (!hasData) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -31,8 +41,9 @@ public class SharedResource {
             }
         }
         hasData = false;
+        System.out.println("Consumed - "+ data);
         notify();
-        return data;
+        
     }
 
 }
