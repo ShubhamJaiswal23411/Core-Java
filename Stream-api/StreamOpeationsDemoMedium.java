@@ -163,7 +163,7 @@ public class StreamOpeationsDemoMedium {
                                 .filter(x -> !seen.add(x))
                                 .distinct()
                                 .toList();
-                System.out.println(duplicateList2);
+                System.out.println(duplicateList2 +"=================");
 
                 // distinct sorted list
                 List<String> distinctSortedList = stringList.stream().distinct().sorted().toList();
