@@ -1,6 +1,6 @@
 package MultiThreading.ProducerConsumer.TrueFalseProducerConsumer;
 
-public class ThreadCommunication {
+public class Main {
     public static void main(String[] args) {
         SharedResouce resource = new SharedResouce();
         Thread consumer = new Thread(()->{

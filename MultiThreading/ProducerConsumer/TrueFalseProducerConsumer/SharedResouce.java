@@ -5,7 +5,7 @@ public class SharedResouce {
     private boolean resource = false;
 
     public synchronized void produce() {
-        if (!resource) {
+        while (!resource) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -18,7 +18,7 @@ public class SharedResouce {
     }
 
     public synchronized void consume() {
-        if (resource) {
+        while (resource) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -26,15 +26,13 @@ public class SharedResouce {
             }
             resource = false;
             log(" - consumed item");
-        } else {
-            log(" - There is no item to consume , waiting for the producer to produce");
         }
         notifyAndWait();
     }
 
     public void notifyAndWait() {
         try {
-            notify();
+            notifyAll();
             wait();
         } catch (InterruptedException e) {
             e.printStackTrace();

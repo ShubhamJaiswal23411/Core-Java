@@ -1,6 +1,6 @@
 package MultiThreading.ProducerConsumer.ValueProducerConsumer;
 
-public class ThreadCommunication {
+public class Main {
     public static void main(String[] args) throws InterruptedException {
         SharedResource resource = new SharedResource();
 

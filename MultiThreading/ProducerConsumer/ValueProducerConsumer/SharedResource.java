@@ -29,7 +29,7 @@ public class SharedResource {
         data = val;
         hasData = true;
         System.out.println("Produced -" + val);
-        notify();
+        notifyAll();
     }
 
     public synchronized void consume() {
@@ -42,7 +42,7 @@ public class SharedResource {
         }
         hasData = false;
         System.out.println("Consumed - "+ data);
-        notify();
+        notifyAll();
         
     }
 

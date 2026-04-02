@@ -3,6 +3,7 @@ package MultiThreading.ReentrantLock;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -28,7 +29,7 @@ public class ReadWriteLockDemo {
         SharedCounter sharedCounter = new SharedCounter();
 
         // Create reader and writer threads
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000; i++) {
             if (i % 2 == 0) {
                 writerThreads.add(
                         new Thread(sharedCounter::incrementCounter, "Writer-" + i));
@@ -70,7 +71,7 @@ public class ReadWriteLockDemo {
  */
 class SharedCounter {
 
-    private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock(true);
 
     // Separate read and write locks obtained from the same ReadWriteLock
     private final Lock readLock = readWriteLock.readLock();
