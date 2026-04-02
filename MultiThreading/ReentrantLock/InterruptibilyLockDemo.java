@@ -6,35 +6,35 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Demonstrates the behavioral difference between:
  *
- * 1. lock() 
- *    - NOT interruptible while waiting.
- *    - If a thread is blocked waiting to acquire the lock, calling interrupt()
- *      does NOT stop it from waiting.
+ * 1. lock()
+ * - NOT interruptible while waiting.
+ * - If a thread is blocked waiting to acquire the lock, calling interrupt()
+ * does NOT stop it from waiting.
  *
  * 2. lockInterruptibly()
- *    - Interruptible while waiting.
- *    - If a thread is blocked waiting for the lock and is interrupted,
- *      it immediately throws InterruptedException and stops waiting.
+ * - Interruptible while waiting.
+ * - If a thread is blocked waiting for the lock and is interrupted,
+ * it immediately throws InterruptedException and stops waiting.
  *
  * The difference becomes visible only when a thread is BLOCKED
  * waiting to acquire a lock already held by another thread.
  *
  * Important Notes:
  * - When InterruptedException is caught, the thread's interrupt flag
- *   is CLEARED. If higher-level monitoring or handling requires it,
- *   the interrupt status should be restored using:
- *       Thread.currentThread().interrupt();
+ * is CLEARED. If higher-level monitoring or handling requires it,
+ * the interrupt status should be restored using:
+ * Thread.currentThread().interrupt();
  *
  * - When a thread is waiting indefinitely to acquire a lock using lock(),
- *   its state is typically WAITING (not TIMED_WAITING), because it waits
- *   until the lock becomes available.
+ * its state is typically WAITING (not TIMED_WAITING), because it waits
+ * until the lock becomes available.
  *
  * - lockInterruptibly() is useful for building responsive and cancellable
- *   systems where waiting threads should be able to terminate early.
+ * systems where waiting threads should be able to terminate early.
  */
 public class InterruptibilyLockDemo {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException{
 
         System.out.println("=== Demonstrating lockInterruptibly() ===");
         demonstrateInterruptibleLock();
@@ -62,7 +62,7 @@ public class InterruptibilyLockDemo {
         Thread waiter = new Thread(() -> {
             try {
                 System.out.println("Waiter trying lockInterruptibly...");
-                lock.lockInterruptibly();  // 🔥 interruptible wait
+                lock.lockInterruptibly(); // interruptible wait
                 try {
                     System.out.println("Waiter acquired lock");
                 } finally {
@@ -79,7 +79,7 @@ public class InterruptibilyLockDemo {
 
         Thread.sleep(1000); // let waiter start waiting
         System.out.println(waiter.getState()); // WAITING not TIMED_WAITING unlike tryLock with time.
-        waiter.interrupt(); //  interrupt while blocked
+        waiter.interrupt(); // interrupt while blocked
 
         holder.join();
         waiter.join();
@@ -101,11 +101,15 @@ public class InterruptibilyLockDemo {
 
         Thread waiter = new Thread(() -> {
             System.out.println("Waiter trying lock()...");
-            lock.lock();   // NOT interruptible while waiting
             try {
-                System.out.println("Waiter acquired lock (after holder released)");
-            } finally {
-                lock.unlock();
+                lock.lock(); // NOT interruptible while waiting
+                try {
+                    System.out.println("Waiter acquired lock (after holder released)");
+                } finally {
+                    lock.unlock();
+                }
+            } catch (Exception e) {
+                System.out.println("Waiter was INTERRUPTED while waiting!");
             }
         });
 
@@ -114,8 +118,9 @@ public class InterruptibilyLockDemo {
         waiter.start();
 
         Thread.sleep(1000);
+        System.out.println("Calling waiter.interrupt() but nothing would happen to its state");
         waiter.interrupt(); // This does NOTHING while waiting
-
+        System.out.println(waiter.getState());
         holder.join();
         waiter.join();
     }

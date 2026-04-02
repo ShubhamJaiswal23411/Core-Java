@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Demonstrates different ways of using ReentrantLock:
- * 1. tryLock() without waiting
+ * 1. tryLock() without waitinPg
  * 2. tryLock() with timed waiting
  * 3. Proper unlock() usage with finally block
  *

@@ -29,7 +29,7 @@ public class LockFairnessDemo {
             public void run(){
                 try {
                     lock.lock();
-                System.out.println(Thread.currentThread().getName() + " - Running");
+                    System.out.println(Thread.currentThread().getName() + " - Running");
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
