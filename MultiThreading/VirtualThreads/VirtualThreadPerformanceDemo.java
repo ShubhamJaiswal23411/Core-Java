@@ -1,4 +1,4 @@
-package MultiThreading.VirtualThreads;
+package VirtualThreads;
 
 import java.net.Socket;
 import java.util.concurrent.CountDownLatch;

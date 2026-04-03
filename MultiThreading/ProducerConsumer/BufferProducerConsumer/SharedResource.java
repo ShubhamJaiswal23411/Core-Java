@@ -1,4 +1,4 @@
-package MultiThreading.ProducerConsumer.BufferProducerConsumer;
+package ProducerConsumer.BufferProducerConsumer;
 
 import java.util.ArrayList;
 import java.util.List;

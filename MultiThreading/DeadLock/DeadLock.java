@@ -1,4 +1,4 @@
-package MultiThreading.DeadLock;
+package DeadLock;
 public class DeadLock {
     public static void main(String[] args) throws InterruptedException {
         PaperWithDeadlock paper = new PaperWithDeadlock();

@@ -1,4 +1,4 @@
-package MultiThreading.ProducerConsumer.TrueFalseProducerConsumer;
+package ProducerConsumer.TrueFalseProducerConsumer;
 
 public class SharedResouce {
 

@@ -1,4 +1,4 @@
-package MultiThreading;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -66,7 +66,6 @@ public class AtomicVsNormalCounterDemo {
 
         System.out.println("Atomic Counter Result: " + atomicDemo.getAtomicValue());
 
-
         // ----------------------------
         // Normal Counter Demonstration
         // ----------------------------
@@ -94,19 +93,18 @@ public class AtomicVsNormalCounterDemo {
     }
 }
 
-
 /**
  * SimpleCounter
  *
  * A non-thread-safe counter implementation.
  *
  * The increment operation:
- *     count++
+ * count++
  *
  * Is internally equivalent to:
- *     1. Read current value
- *     2. Add 1
- *     3. Write new value
+ * 1. Read current value
+ * 2. Add 1
+ * 3. Write new value
  *
  * When multiple threads execute this simultaneously,
  * lost updates can occur because these steps are not atomic.

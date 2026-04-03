@@ -1,4 +1,4 @@
-package MultiThreading.ProducerConsumer.ValueProducerConsumer;
+package ProducerConsumer.ValueProducerConsumer;
 /*
     Important point : this producer consumer problem works with an if condition as wel without a while
     but the reason for using a while is that a thread might wake if someone else called a notify all as well 

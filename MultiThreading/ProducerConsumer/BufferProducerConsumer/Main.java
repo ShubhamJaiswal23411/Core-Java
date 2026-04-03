@@ -1,4 +1,4 @@
-package MultiThreading.ProducerConsumer.BufferProducerConsumer;
+package ProducerConsumer.BufferProducerConsumer;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
