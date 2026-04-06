@@ -1,4 +1,4 @@
-package Executor;
+package Executor.ThreadPoolExecutor;
 
 public class CustomRejectionException extends RuntimeException{
 
